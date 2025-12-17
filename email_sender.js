@@ -8,7 +8,11 @@ const server = express();
 const PORT = process.env.PORT || 3003;
 
 server.use(express.json());
-server.use(cors());
+server.use(cors({ origin: "*" }));
+
+server.get('/', (req, res) => {
+  res.send('Hello world');
+});
 
 // routes
 server.post("/send", sendMailController.sendEmail);
